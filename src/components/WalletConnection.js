@@ -47,27 +47,38 @@ const WalletConnection = () => {
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "50px" }}>
-      <h1>Connect Your Crypto Wallet</h1>
-      <select onChange={(e) => setChain(e.target.value)} value={chain}>
-        <option value="ethereum">Ethereum</option>
-        <option value="solana">Solana</option>
-      </select>
-      <br />
-      <br />
-      <button
-        onClick={connectWallet}
-        style={{ padding: "10px 20px", fontSize: "16px" }}
+    <div className="flex flex-col items-center p-12">
+      <h1 className="text-6xl font-bold mb-8">Connect Your Crypto Wallet</h1>
+      <div
+        className="card h-[60%] w-[80%] flex flex-col items-center justify-center p-12
+       bg-slate-800 border border-white rounded-lg shadow-md"
       >
-        Connect Wallet
-      </button>
-      {balance && (
-        <div style={{ marginTop: "20px", fontSize: "20px" }}>
-          <p>Balance: {balance}</p>
-        </div>
-      )}
+        <select
+          className="mb-4 p-2 border border-gray-300 rounded-md text-black"
+          onChange={(e) => setChain(e.target.value)}
+          value={chain}
+        >
+          <option value="ethereum" className="m-5">
+            Ethereum
+          </option>
+          <option value="solana" className="m-5">
+            Solana
+          </option>
+        </select>
+        <button
+          onClick={connectWallet}
+          className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+        >
+          Connect Wallet
+        </button>
+        {balance && (
+          <div className="mt-6 text-xl font-medium">
+            <p>Balance: {balance}</p>
+          </div>
+        )}
+      </div>
       {error && (
-        <div style={{ marginTop: "20px", color: "red", fontSize: "16px" }}>
+        <div className="mt-6 text-red-500 text-lg">
           <p>{error}</p>
         </div>
       )}
